@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de Inscrição - Maratona</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            font-size: 16px;
+            color: #555;
+            display: block;
+        }
+        .input-group input, .input-group select, .input-group textarea {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .input-group textarea {
+            height: 100px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .btn:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Ficha de Inscrição - Maratona</h1>
+
+        <form id="formInscricao">
+            <!-- Nome completo -->
+            <div class="input-group">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+            </div>
+
+            <!-- Idade -->
+            <div class="input-group">
+                <label for="idade">Idade:</label>
+                <input type="number" id="idade" name="idade" min="18" max="100" required placeholder="Digite sua idade">
+            </div>
+
+            <!-- Sexo -->
+            <div class="input-group">
+                <label for="sexo">Sexo:</label>
+                <select id="sexo" name="sexo" required>
+                    <option value="">Selecione</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
+                    <option value="outro">Outro</option>
+                </select>
+            </div>
+
+            <!-- Categoria da corrida -->
+            <div class="input-group">
+                <label for="categoria">Categoria de Corrida:</label>
+                <select id="categoria" name="categoria" required>
+                    <option value="">Selecione</option>
+                    <option value="5km">5km</option>
+                    <option value="10km">10km</option>
+                    <option value="maratona">Maratona (42,195km)</option>
+                    <option value="ultramaratona">Ultramaratona (acima de 42,195km)</option>
+                </select>
+            </div>
+
+            <!-- Endereço -->
+            <div class="input-group">
+                <label for="endereco">Endereço:</label>
+                <textarea id="endereco" name="endereco" required placeholder="Digite seu endereço"></textarea>
+            </div>
+
+            <!-- Contato de emergência -->
+            <div class="input-group">
+                <label for="contatoEmergencia">Contato de Emergência:</label>
+                <input type="text" id="contatoEmergencia" name="contatoEmergencia" required placeholder="Nome e telefone de emergência">
+            </div>
+
+            <!-- Aceite de termos e condições -->
+            <div class="input-group">
+                <label>
+                    <input type="checkbox" id="termos" name="termos" required>
+                    Eu aceito os <a href="#">termos e condições</a> da maratona.
+                </label>
+            </div>
+
+            <!-- Botão de inscrição -->
+            <button type="submit" class="btn" id="submitBtn">Enviar Inscrição</button>
+        </form>
+    </div>
+
+    <script>
+        // Função para validar e mostrar os dados do formulário
+        document.getElementById('formInscricao').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio do formulário tradicional
+            
+            // Coletando os dados inseridos no formulário
+            var nome = document.getElementById('nome').value;
+            var idade = document.getElementById('idade').value;
+            var sexo = document.getElementById('sexo').value;
+            var categoria = document.getElementById('categoria').value;
+            var endereco = document.getElementById('endereco').value;
+            var contatoEmergencia = document.getElementById('contatoEmergencia').value;
+            var termos = document.getElementById('termos').checked;
+
+            // Exibindo uma mensagem com os dados do formulário
+            if (termos) {
+                alert("Inscrição enviada com sucesso!\n\n" +
+                    "Nome: " + nome + "\n" +
+                    "Idade: " + idade + " anos\n" +
+                    "Sexo: " + sexo + "\n" +
+                    "Categoria: " + categoria + "\n" +
+                    "Endereço: " + endereco + "\n" +
+                    "Contato de Emergência: " + contatoEmergencia);
+            } else {
+                alert("Você precisa aceitar os termos e condições para concluir a inscrição.");
+            }
+        });
+    </script>
+
+</body>
+</html>
